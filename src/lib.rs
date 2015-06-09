@@ -58,7 +58,10 @@
 #[macro_use] extern crate log;
 
 // Third party packages
+// An extern crate declaration specifies a dependency on an external crate.
+// 引入外部资源
 extern crate hyper;
+// as 类似别名
 extern crate typemap as tmap;
 extern crate plugin;
 extern crate error as err;
@@ -114,12 +117,14 @@ pub type IronResult<T> = Result<T, IronError>;
 /// This module contains several important traits that provide many
 /// of the convenience methods in Iron, as well as `Request`, `Response`
 /// `IronResult`, `IronError` and `Iron`.
+// 模块
 pub mod prelude {
     pub use {Set, Plugin, Chain, Request, Response,
              IronResult, IronError, Iron};
 }
 
 /// Re-exports from the TypeMap crate.
+// 模块
 pub mod typemap {
     pub use tmap::{TypeMap, Key};
 }

@@ -1,9 +1,15 @@
 //! Exposes the `Iron` type, the main entrance point of the
 //! `Iron` library.
 
+// Simultaneously binding a list of paths differing only in their final element,
+// using the glob-like brace syntax use a::b::{c,d,e,f};
+// 同时引入 std::net 下的 ToSocketAddrs 和 SocketAddr，在这里只是语法糖
 use std::net::{ToSocketAddrs, SocketAddr};
 use std::path::PathBuf;
 
+// use declarations are private to the containing module, by default.
+// Also like items, a use declaration can be public, if qualified by the pub keyword.
+// 默认是 private
 pub use hyper::server::Listening;
 use hyper::server::Server;
 use hyper::net::Fresh;
@@ -20,6 +26,9 @@ use status;
 ///
 /// `Iron` contains the `Handler` which takes a `Request` and produces a
 /// `Response`.
+// A structure is a nominal structure type defined with the keyword struct.
+// 结构体
+// H 表示里面会用到的东西
 pub struct Iron<H> {
     /// Iron contains a `Handler`, which it uses to create responses for client
     /// requests.
@@ -35,6 +44,8 @@ pub struct Iron<H> {
 /// Protocol used to serve content. Future versions of Iron may add new protocols
 /// to this enum. Thus you should not exhaustively match on its variants.
 #[derive(Clone)]
+// Enumerations are declared with the keyword enum.
+// 枚举
 pub enum Protocol {
     /// Plaintext HTTP/1
     Http,
@@ -47,6 +58,8 @@ pub enum Protocol {
     }
 }
 
+// Implementations are defined with the keyword impl.
+// 执行
 impl Protocol {
     /// Return the name used for this protocol in a URI's scheme part.
     pub fn name(&self) -> &'static str {
