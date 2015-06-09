@@ -11,12 +11,14 @@ enum LoggerMode {
     Large
 }
 
+// 声明（结构体）
 struct Logger {
     mode: LoggerMode
 }
 
 struct LoggerHandler<H: Handler> { logger: Logger, handler: H }
 
+// 实现
 impl Logger {
     fn new(mode: LoggerMode) -> Logger {
         Logger { mode: mode }
